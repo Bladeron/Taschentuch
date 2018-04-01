@@ -9,7 +9,7 @@ function Player(game,x, y, color) {
   
   this.vx = 10;
   this.vy = 10;
-  
+  this.pressedKeys = [];
   //this.gravity = 0.15;
   
   this.setListeners();
