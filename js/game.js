@@ -3,8 +3,8 @@ function Game(canvasId) {
   this.ctx = this.canvas.getContext("2d");
   
   this.background = new Background(this);
-  this.player = new Player(this);
-  this.player2 = new Player(this)
+  this.player = new Player(this, 50, this.canvas.height / 2, "red");
+  this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "green")
 }
 
 //Starts the game
@@ -55,6 +55,7 @@ Game.prototype.clear = function() {
 Game.prototype.draw = function(){
  this.background.draw();
  this.player.draw();
+ this.player2.draw();
  };
 
 Game.prototype.moveAll = function() {

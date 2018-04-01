@@ -2,8 +2,9 @@ function Player(game,x, y, color) {
   this.game = game;
   
   this.r = 25;
-  this.x = 50;
-  this.y = this.game.canvas.height / 2;
+  this.x = x;
+  this.y = y;
+  this.color = color;
   
   this.vx = 10;
   this.vy = 10;
@@ -33,11 +34,12 @@ Player.prototype.setListeners = function() {
   }.bind(this);
 };
 
+
 //A ball as a placeholder
 Player.prototype.draw = function() { 
   this.game.ctx.beginPath();
-  this.game.ctx.fillStyle="red";
-  this.game.ctx.strokeStyle="black";
+  this.game.ctx.fillStyle = this.color;
+  this.game.ctx.strokeStyle = "black";
   this.game.ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
   this.game.ctx.fill();
   this.game.ctx.stroke();
