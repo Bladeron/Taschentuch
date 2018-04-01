@@ -9,13 +9,15 @@ function Player(game,x, y, color) {
   
   this.vx = 10;
   this.vy = 10;
+
+  this.score = 0;
   this.pressedKeys = [];
   //this.gravity = 0.15;
   
   this.setListeners();
 }
 
-//Keys to move player 1
+//Keys to move both players not together :(
 Player.prototype.setListeners = function() {
   document.onkeydown = function(event) {
     switch( event.keyCode) {
