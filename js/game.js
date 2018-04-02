@@ -21,10 +21,10 @@ Game.prototype.start = function() {
   this.interval = setInterval(function(){
     this.clear();
     this.draw();
-    this.generateObstacle();
-    
-
   }.bind(this), 1000/this.fps);
+  
+  this.generateObstacle();
+  this.drawObstacles();
 };
 
 //Stops the game
@@ -62,11 +62,11 @@ Game.prototype.draw = function(){
  this.player.draw();
  this.player2.draw();
  this.totem.draw();
- this.obstacle.draw();
+ this.drawObstacles();
  };
 
-Game.prototype.moveAll = function() {
-  //this.background.move();
-  //this.player.move();
-  //this.obstacle.move();
+Game.prototype.drawObstacles = function() {
+  for (var i = 0; i < this.obstacleArray.length; i++) {
+    this.obstacleArray[i].draw();
+  }
 };
