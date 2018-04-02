@@ -21,7 +21,7 @@ Game.prototype.start = function() {
   this.interval = setInterval(function(){
     this.clear();
     this.draw();
-   
+    this.generateObstacle();
     
 
   }.bind(this), 1000/this.fps);
@@ -35,11 +35,20 @@ Game.prototype.stop = function() {
 //Check collisions with walls/other players/item
 Game.prototype.isCollision = function() {
   console.log("Is collision");
+  /* if(this.player.x < this.obstacleArray[i].x &&
+  this.player.x + this.player.width > this.obstacleArray[i].x &&
+  this.player.y < this.obstacleArray[i].y + this.obstacleArray[i].width &&
+  this.obstacleArray[i].y +this.obstacleArray[i].width > this.player.y ) { 
+    
+  }*/
 };
 
 Game.prototype.generateObstacle = function() {
   //Random obstacle ( walls ) generator
-  this.obstacleArray.push(new Obstacle(this));
+  for(var i = 0; i < 10; i++) {
+    debugger;
+    this.obstacleArray.push(new Obstacle(this));
+  }
 };
 
 //Cleans whole screen to animate if necessary

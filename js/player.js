@@ -29,14 +29,15 @@ Player.prototype.setListeners = function() {
         this.moveDown(this.game.player);
          break;
       case 37: // left
-        if (this.game.player.x - 50 < 0) return;
-        this.game.player.x -= this.vx;
+        this.game.isCollision();
+        this.moveLeft(this.game.player);
         break;
       case 39: // right
         this.game.isCollision();
         this.moveRight(this.game.player);
         break;
       case 87:  //Up
+        this.game.isCollision();
         this.moveUp(this.game.player2);
         break;
       case 83:  //Down
@@ -44,8 +45,8 @@ Player.prototype.setListeners = function() {
         this.moveDown(this.game.player2);
         break;
       case 65:  //Left
-       if (this.game.player2.x - 50 < 0) return;
-        this.game.player2.x -= this.vy;
+        this.game.isCollision();
+        this.moveLeft(this.game.player2);
         break;
       case 68:  //Right
         this.game.isCollision();
@@ -94,4 +95,9 @@ Player.prototype.moveDown = function(user) {
 Player.prototype.moveRight = function(user) { 
   if (user.x + 50 >= this.game.canvas.width) return;
   user.x += this.vx;
+};  
+
+Player.prototype.moveLeft = function(user) { 
+  if (user.x - 50 < 0) return;
+  user.x -= this.vx;
 };  
