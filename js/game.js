@@ -19,7 +19,6 @@ Game.prototype.start = function() {
     if(this.frameInterval == 1000){
       this.frameInterval = 0;
     }
-
     if(this.frameInterval % 45 == 0) {
       this.generateObstacle();      
     }
@@ -39,8 +38,9 @@ Game.prototype.stop = function() {
 
 //Check collisions with walls/other players/item
 Game.prototype.isCollision = function() {
-  /* if (this.player.x + this.player.width > this.obstacleArray[0].x && this.player.y > this.obstacleArray[0].y) {
-   } */
+  if (this.player.x < 0 + this.player.width) {
+    
+   }
 };
 
 Game.prototype.generateObstacle = function() {
