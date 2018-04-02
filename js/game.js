@@ -34,9 +34,7 @@ Game.prototype.stop = function() {
 
 //Check collisions with walls/other players/item
 Game.prototype.isCollision = function() {
-  if (this.player.x + this.player.r > this.obstacleArray.x) {
-    return
-   }
+  console.log("Is collision");
 };
 
 Game.prototype.generateObstacle = function() {

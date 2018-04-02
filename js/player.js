@@ -21,37 +21,35 @@ Player.prototype.setListeners = function() {
   document.onkeydown = function(event) {
     switch( event.keyCode) {
       case 38: // Up
-       if (this.game.player.y <= 50) return;
-        this.game.player.y -= this.vy;
+        this.game.isCollision();
+        this.moveUp(this.game.player);
         break;
       case 40: // Down
-      if (this.game.player.y + 50 >= this.game.canvas.height) return;
-        this.game.player.y += this.vy;
+        this.game.isCollision();
+        this.moveDown(this.game.player);
          break;
       case 37: // left
         if (this.game.player.x - 50 < 0) return;
         this.game.player.x -= this.vx;
         break;
       case 39: // right
-        if (this.game.player.x + 50 >= this.game.canvas.width) return;
-        this.game.player.x += this.vx;
+        this.game.isCollision();
+        this.moveRight(this.game.player);
         break;
       case 87:  //Up
-       if (this.game.player2.y <= 50) return;
-        this.game.player2.y -= this.vy;
+        this.moveUp(this.game.player2);
         break;
       case 83:  //Down
-       if (this.game.player2.y + 50 >= this.game.canvas.height) return;
-
-        this.game.player2.y += this.vy;
+        this.game.isCollision();
+        this.moveDown(this.game.player2);
         break;
       case 65:  //Left
        if (this.game.player2.x - 50 < 0) return;
         this.game.player2.x -= this.vy;
         break;
       case 68:  //Right
-       if (this.game.player2.x + 50 >= this.game.canvas.width) return;
-        this.game.player2.x += this.vy;
+        this.game.isCollision();
+        this.moveRight(this.game.player2);
         break;  
       }
   }.bind(this);
@@ -83,5 +81,17 @@ Player.prototype.animateImg = function() {
 } */
 };
 
-Player.prototype.move = function() { 
-};
+Player.prototype.moveUp = function(user) { 
+  if (user.y <= 50) return;
+  user.y -= this.vy;
+};  
+
+Player.prototype.moveDown = function(user) { 
+  if (user.y + 50 >= this.game.canvas.height) return;
+  user.y += this.vy;
+};  
+
+Player.prototype.moveRight = function(user) { 
+  if (user.x + 50 >= this.game.canvas.width) return;
+  user.x += this.vx;
+};  
