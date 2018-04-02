@@ -4,7 +4,8 @@ function Game(canvasId) {
   
   this.background = new Background(this);
   this.player = new Player(this, 50, this.canvas.height / 2, "red");
-  this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "green")
+  this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "green");
+  this.totem = new Totem(this);
 }
 
 //Starts the game
@@ -56,6 +57,7 @@ Game.prototype.draw = function(){
  this.background.draw();
  this.player.draw();
  this.player2.draw();
+ this.totem.draw();
  };
 
 Game.prototype.moveAll = function() {
