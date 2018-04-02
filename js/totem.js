@@ -19,9 +19,9 @@ function Totem(game) {
 
 //Loads totem image in a random place ( area to be determined )
 Totem.prototype.draw = function() { 
-
+  
   this.game.ctx.fillRect(this.x - this.width/2,this.y - this.height/2,this.width,this.height);
-
+  
   //this.animateImg();
 
 };

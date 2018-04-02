@@ -1,11 +1,10 @@
 function Obstacle(game) {
   this.game = game;
-
   
-  this.x = 460;
+  this.x = 360;
   this.y = 300;
 
-  this.w = 30;
+  this.w = 40;
   this.h = 300;
 
 }
@@ -13,4 +12,11 @@ function Obstacle(game) {
 Obstacle.prototype.draw = function() {
   this.game.ctx.fillStyle = "blue";
   this.game.ctx.fillRect(this.x, this.y, this.w, this.h);
+
+  this.game.ctx.fillStyle = "blue";
+  this.game.ctx.fillRect(100, 150, 300, 40);
+
+  this.game.ctx.fillStyle = "blue";
+  this.game.ctx.fillRect(1000, 500, 200, 40);
+
 };

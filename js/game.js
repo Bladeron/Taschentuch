@@ -1,7 +1,14 @@
 function Game(canvasId) {
   this.canvas = document.getElementById(canvasId);
   this.ctx = this.canvas.getContext("2d");
+
+  /* this.width = 1200;
+  this.height = 700; */
+
+  //Array to store obstacles
+  this.obstacleArray = [];
   
+  //Objects
   this.background = new Background(this);
   this.player = new Player(this, 50, this.canvas.height / 2, "red");
   this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "green");
@@ -13,20 +20,8 @@ function Game(canvasId) {
 Game.prototype.start = function() {
   this.interval = setInterval(function(){
     this.clear();
-    //this.moveAll(); <-- To use later
     this.draw();
-    /* this.frameInterval++;
-
-    if(this.frameInterval == 1000){
-      this.frameInterval = 0;
-    }
-    if(this.frameInterval % 45 == 0) {
-      this.generateObstacle();      
-    }
-
-    if(this.obstacleArray.length != 0){
-      this.isCollision();
-    } */
+   
     
 
   }.bind(this), 1000/this.fps);
@@ -39,13 +34,14 @@ Game.prototype.stop = function() {
 
 //Check collisions with walls/other players/item
 Game.prototype.isCollision = function() {
-  if (this.player.x < 0 + this.player.width) {
-    
+  if (this.player.x + this.player.r > this.obstacleArray.x) {
+    return
    }
 };
 
 Game.prototype.generateObstacle = function() {
   //Random obstacle ( walls ) generator
+  this.obstacleArray.push(new Obstacle(this));
 };
 
 //Cleans whole screen to animate if necessary

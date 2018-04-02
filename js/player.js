@@ -10,7 +10,7 @@ function Player(game,x, y, color) {
   this.vx = 10;
   this.vy = 10;
 
-  this.pressedKeys = [];
+  //this.pressedKeys = [];
   //this.gravity = 0.15;
   
   this.setListeners();
@@ -25,7 +25,7 @@ Player.prototype.setListeners = function() {
         this.game.player.y -= this.vy;
         break;
       case 40: // Down
-      if (this.game.player.y + 50 >= this.game.canvas.heigth) return;
+      if (this.game.player.y + 50 >= this.game.canvas.height) return;
         this.game.player.y += this.vy;
          break;
       case 37: // left
@@ -33,7 +33,6 @@ Player.prototype.setListeners = function() {
         this.game.player.x -= this.vx;
         break;
       case 39: // right
-        debugger;
         if (this.game.player.x + 50 >= this.game.canvas.width) return;
         this.game.player.x += this.vx;
         break;
@@ -42,7 +41,8 @@ Player.prototype.setListeners = function() {
         this.game.player2.y -= this.vy;
         break;
       case 83:  //Down
-       if (this.game.player2.y >= this.game.canvas.heigth) return;
+       if (this.game.player2.y + 50 >= this.game.canvas.height) return;
+
         this.game.player2.y += this.vy;
         break;
       case 65:  //Left
