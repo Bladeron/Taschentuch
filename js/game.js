@@ -5,7 +5,7 @@ function Game(canvasId) {
   this.background = new Background(this);
   this.player = new Player(this, 50, this.canvas.height / 2, "red");
   this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "green");
-  this.totem = new Totem(this);
+  this.totem = new Totem (this); 
 }
 
 //Starts the game
