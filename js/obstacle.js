@@ -1,11 +1,11 @@
 function Obstacle(game) {
   this.game = game;
   
-  this.x = Math.floor(Math.random()*(1200-300+1)+500);
-  this.y = Math.floor(Math.random()*(400-350+1)+350);
+  this.x = Math.floor(Math.random()*(1000-300+1)+300);
+  this.y = Math.floor(Math.random()*(700-0+1)+0);
 
   this.w = 40;
-  this.h = 300;
+  this.h = 200;
 
 }
 

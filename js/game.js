@@ -34,18 +34,25 @@ Game.prototype.stop = function() {
 
 //Check collisions with walls/other players/item
 Game.prototype.isCollision = function() {
-  console.log("Is collision");
-  /* if(this.player.x < this.obstacleArray[i].x &&
-  this.player.x + this.player.width > this.obstacleArray[i].x &&
-  this.player.y < this.obstacleArray[i].y + this.obstacleArray[i].width &&
-  this.obstacleArray[i].y +this.obstacleArray[i].width > this.player.y ) { 
+  
+  for (var i=0; i<this.obstacleArray.length; i++) {
     
-  }*/
+    if(
+      this.player.x < this.obstacleArray[i].x + this.obstacleArray[i].w &&
+      this.player.x + this.player.r > this.obstacleArray[i].x &&
+      this.player.y < this.obstacleArray[i].y + this.obstacleArray[i].h &&
+      this.player.y + this.player.r > this.obstacleArray[i].y ) { 
+        console.log("Is collision");
+        this.player.x -= 50;
+        return false;
+    }
+  }
+  return true;
 };
 
 Game.prototype.generateObstacle = function() {
   //Random obstacle ( walls ) generator
-  for(var i = 0; i < 10; i++) {
+  for(var i = 0; i < 10; i++) { 
     debugger;
     this.obstacleArray.push(new Obstacle(this));
   }

@@ -21,20 +21,20 @@ Player.prototype.setListeners = function() {
   document.onkeydown = function(event) {
     switch( event.keyCode) {
       case 38: // Up
-        this.game.isCollision();
-        this.moveUp(this.game.player);
+        if(this.game.isCollision())
+          this.moveUp(this.game.player);
         break;
       case 40: // Down
-        this.game.isCollision();
-        this.moveDown(this.game.player);
+        if(this.game.isCollision())
+          this.moveDown(this.game.player);
          break;
       case 37: // left
-        this.game.isCollision();
-        this.moveLeft(this.game.player);
+        if(this.game.isCollision())
+          this.moveLeft(this.game.player);
         break;
       case 39: // right
-        this.game.isCollision();
-        this.moveRight(this.game.player);
+        if(this.game.isCollision())
+          this.moveRight(this.game.player);
         break;
       case 87:  //Up
         this.game.isCollision();
