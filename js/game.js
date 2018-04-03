@@ -21,7 +21,7 @@ Game.prototype.start = function() {
   this.interval = setInterval(function(){
     this.clear();
     this.draw();
-  }.bind(this), 1000/this.fps);
+  }.bind(this), 10);
   
   this.generateObstacle();
   this.drawObstacles();
@@ -38,11 +38,12 @@ Game.prototype.isCollision = function(user) {
   for (var i=0; i<this.obstacleArray.length; i++) {
     
     if(
-      user.x < this.obstacleArray[i].x + this.obstacleArray[i].w &&
+      user.x - user.r <= this.obstacleArray[i].x + this.obstacleArray[i].w &&
       user.x + user.r > this.obstacleArray[i].x &&
       user.y < this.obstacleArray[i].y + this.obstacleArray[i].h &&
       user.y + user.r > this.obstacleArray[i].y ) { 
         console.log("Is collision");
+        debugger;
         user.x = user.lastX;
         user.y = user.lastY;
         return false;
@@ -54,7 +55,6 @@ Game.prototype.isCollision = function(user) {
 Game.prototype.generateObstacle = function() {
   //Random obstacle ( walls ) generator
   for(var i = 0; i < 10; i++) { 
-    debugger;
     this.obstacleArray.push(new Obstacle(this));
   }
 };

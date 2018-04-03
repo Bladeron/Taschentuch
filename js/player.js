@@ -12,7 +12,6 @@ function Player(game,x, y, color) {
 
   this.lastX = 0;
   this.lastY = 0;
-
   //this.pressedKeys = [];
   //this.gravity = 0.15;
   
