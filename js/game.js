@@ -13,7 +13,6 @@ function Game(canvasId) {
   this.player = new Player(this, 50, this.canvas.height / 2, "red");
   this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "green");
   this.totem = new Totem (this); 
-  this.obstacle = new Obstacle (this);
   
 }
 
@@ -126,7 +125,7 @@ Game.prototype.isCollision = function() {
     if(
       this.player.x - this.player.r <= this.obstacleArray[i].x + this.obstacleArray[i].w &&
       this.player.x + this.player.r > this.obstacleArray[i].x &&
-      this.player.y < this.obstacleArray[i].y + this.obstacleArray[i].h &&
+      this.player.y - this.player.r < this.obstacleArray[i].y + this.obstacleArray[i].h &&
       this.player.y + this.player.r > this.obstacleArray[i].y ) { 
         console.log("Is collision");
         this.player.x = this.player.lastX;
@@ -137,7 +136,7 @@ Game.prototype.isCollision = function() {
     if(
       this.player2.x - this.player2.r <= this.obstacleArray[i].x + this.obstacleArray[i].w &&
       this.player2.x + this.player2.r > this.obstacleArray[i].x &&
-      this.player2.y < this.obstacleArray[i].y + this.obstacleArray[i].h &&
+      this.player2.y - this.player2.r< this.obstacleArray[i].y + this.obstacleArray[i].h &&
       this.player2.y + this.player2.r > this.obstacleArray[i].y ) { 
         console.log("Is collision");
         this.player2.x = this.player2.lastX;
@@ -152,9 +151,20 @@ Game.prototype.isCollision = function() {
 //Fills obstacle array
 Game.prototype.generateObstacle = function() {
   //Random obstacle ( walls ) generator
+  var x = 0;
   for(var i = 0; i < 10; i++) { 
-    this.obstacleArray.push(new Obstacle(this));
+    x += 120;
+    var y = 0;
+    this.obstacleArray.push(new Obstacle(this, x, y));   
   }
+  
+  for(var i = 0; i < 9; i++) { 
+    x -= 120;
+    var y = 370;
+    this.obstacleArray.push(new Obstacle(this, x, y));   
+  }
+
+  
 };
 
 //Cleans whole screen to animate if necessary
