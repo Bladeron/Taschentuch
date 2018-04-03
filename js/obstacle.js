@@ -5,7 +5,7 @@ function Obstacle(game) {
   this.y = Math.floor(Math.random()*(700-0+1)+0);
 
   this.w = 40;
-  this.h = 200;
+  this.h = 100;
 
 }
 
