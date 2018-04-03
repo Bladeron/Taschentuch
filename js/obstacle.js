@@ -9,6 +9,7 @@ function Obstacle(game) {
 
 }
 
+//Obstacles form placeholder
 Obstacle.prototype.draw = function() {
   this.game.ctx.fillStyle = "blue";
   this.game.ctx.fillRect(this.x, this.y, this.w, this.h);

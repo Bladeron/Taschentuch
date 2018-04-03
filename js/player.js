@@ -12,14 +12,15 @@ function Player(game,x, y, color) {
 
   this.lastX = 0;
   this.lastY = 0;
-  //this.pressedKeys = [];
+
+  this.pressedKeys = [false, false, false, false]; //up, down, left, right
   //this.gravity = 0.15;
   
-  this.setListeners();
+  /* this.setListeners(); */
 }
 
 //Keys to move both players not together :(
-Player.prototype.setListeners = function() {
+/* Player.prototype.setListeners = function() {
   document.onkeydown = function(event) {
     switch( event.keyCode) {
       case 38: // Up
@@ -56,7 +57,7 @@ Player.prototype.setListeners = function() {
         break;  
       }
   }.bind(this);
-};
+}; */
 
 
 //A ball as a placeholder
@@ -84,31 +85,65 @@ Player.prototype.animateImg = function() {
 } */
 };
 
-Player.prototype.moveUp = function(user) { 
-  if (user.y <= 50) return;
-  user.lastY = user.y;
-  user.lastX = user.x;
-  user.y -= this.vy;
-  
+
+//Movement functions
+Player.prototype.moveUp = function() { 
+  if(this.pressedKeys[0] === true){
+    if (this.y <= 50) return;
+    this.lastY = this.y;
+    this.lastX = this.x;
+    this.y -= this.vy;
+  }
 };  
 
-Player.prototype.moveDown = function(user) { 
-  if (user.y + 50 >= this.game.canvas.height) return;
-  user.lastY = user.y;
-  user.lastX = user.x;
-  user.y += this.vy;
+Player.prototype.moveDown = function() { 
+  if(this.pressedKeys[1] === true){
+  if (this.y + 50 >= this.game.canvas.height) return;
+  this.lastY = this.y;
+  this.lastX = this.x;
+  this.y += this.vy;
+  }
 };  
 
-Player.prototype.moveRight = function(user) { 
-  if (user.x + 50 >= this.game.canvas.width) return;
-  user.lastY = user.y;
-  user.lastX = user.x;
-  user.x += this.vx;
+Player.prototype.moveRight = function() { 
+  if(this.pressedKeys[3] === true){
+  if (this.x + 50 >= this.game.canvas.width) return;
+  this.lastY = this.y;
+  this.lastX = this.x;
+  this.x += this.vx;
+  }
 };  
 
-Player.prototype.moveLeft = function(user) { 
-  if (user.x - 50 < 0) return;
-  user.lastY = user.y;
-  user.lastX = user.x;
-  user.x -= this.vx;
+Player.prototype.moveLeft = function() { 
+  if(this.pressedKeys[2] === true){
+  if (this.x - 50 < 0) return;
+  this.lastY = this.y;
+  this.lastX = this.x;  
+  this.x -= this.vx;
+  }
 };  
+
+Player.prototype.trueUp = function(){
+  this.pressedKeys[0] = true;
+}
+Player.prototype.trueDown = function(){
+  this.pressedKeys[1] = true;
+}
+Player.prototype.trueLeft = function(){
+  this.pressedKeys[2] = true;
+}
+Player.prototype.trueRight = function(){
+  this.pressedKeys[3] = true;
+}
+Player.prototype.falseUp = function(){
+  this.pressedKeys[0] = false;
+}
+Player.prototype.falseDown = function(){
+  this.pressedKeys[1] = false;
+}
+Player.prototype.falseLeft = function(){
+  this.pressedKeys[2] = false;
+}
+Player.prototype.falseRight = function(){
+  this.pressedKeys[3] = false;
+}
