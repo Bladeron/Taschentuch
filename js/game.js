@@ -33,17 +33,18 @@ Game.prototype.stop = function() {
 };
 
 //Check collisions with walls/other players/item
-Game.prototype.isCollision = function() {
+Game.prototype.isCollision = function(user) {
   
   for (var i=0; i<this.obstacleArray.length; i++) {
     
     if(
-      this.player.x < this.obstacleArray[i].x + this.obstacleArray[i].w &&
-      this.player.x + this.player.r > this.obstacleArray[i].x &&
-      this.player.y < this.obstacleArray[i].y + this.obstacleArray[i].h &&
-      this.player.y + this.player.r > this.obstacleArray[i].y ) { 
+      user.x < this.obstacleArray[i].x + this.obstacleArray[i].w &&
+      user.x + user.r > this.obstacleArray[i].x &&
+      user.y < this.obstacleArray[i].y + this.obstacleArray[i].h &&
+      user.y + user.r > this.obstacleArray[i].y ) { 
         console.log("Is collision");
-        this.player.x -= 50;
+        user.x = user.lastX;
+        user.y = user.lastY;
         return false;
     }
   }

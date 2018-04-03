@@ -10,6 +10,9 @@ function Player(game,x, y, color) {
   this.vx = 10;
   this.vy = 10;
 
+  this.lastX = 0;
+  this.lastY = 0;
+
   //this.pressedKeys = [];
   //this.gravity = 0.15;
   
@@ -21,35 +24,35 @@ Player.prototype.setListeners = function() {
   document.onkeydown = function(event) {
     switch( event.keyCode) {
       case 38: // Up
-        if(this.game.isCollision())
+        if(this.game.isCollision(this.game.player))
           this.moveUp(this.game.player);
         break;
       case 40: // Down
-        if(this.game.isCollision())
+        if(this.game.isCollision(this.game.player))
           this.moveDown(this.game.player);
          break;
       case 37: // left
-        if(this.game.isCollision())
+        if(this.game.isCollision(this.game.player))
           this.moveLeft(this.game.player);
         break;
       case 39: // right
-        if(this.game.isCollision())
+        if(this.game.isCollision(this.game.player))
           this.moveRight(this.game.player);
         break;
       case 87:  //Up
-        this.game.isCollision();
+        this.game.isCollision(this.game.player2);
         this.moveUp(this.game.player2);
         break;
       case 83:  //Down
-        this.game.isCollision();
+        this.game.isCollision(this.game.player2);
         this.moveDown(this.game.player2);
         break;
       case 65:  //Left
-        this.game.isCollision();
+        this.game.isCollision(this.game.player2);
         this.moveLeft(this.game.player2);
         break;
       case 68:  //Right
-        this.game.isCollision();
+        this.game.isCollision(this.game.player2);
         this.moveRight(this.game.player2);
         break;  
       }
@@ -84,20 +87,29 @@ Player.prototype.animateImg = function() {
 
 Player.prototype.moveUp = function(user) { 
   if (user.y <= 50) return;
+  user.lastY = user.y;
+  user.lastX = user.x;
   user.y -= this.vy;
+  
 };  
 
 Player.prototype.moveDown = function(user) { 
   if (user.y + 50 >= this.game.canvas.height) return;
+  user.lastY = user.y;
+  user.lastX = user.x;
   user.y += this.vy;
 };  
 
 Player.prototype.moveRight = function(user) { 
   if (user.x + 50 >= this.game.canvas.width) return;
+  user.lastY = user.y;
+  user.lastX = user.x;
   user.x += this.vx;
 };  
 
 Player.prototype.moveLeft = function(user) { 
   if (user.x - 50 < 0) return;
+  user.lastY = user.y;
+  user.lastX = user.x;
   user.x -= this.vx;
 };  
