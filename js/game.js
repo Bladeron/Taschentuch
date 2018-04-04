@@ -47,39 +47,32 @@ Game.prototype.setListeners = function() {
   document.onkeydown = function(event) {
     switch(event.keyCode) {
       case 38: // Up
-        
           this.player.trueUp();
         break;
       case 40: // Down
-        if(this.isCollision(this.player))
         this.player.trueDown();
          break;
       case 37: // left
-        if(this.isCollision(this.player))
         this.player.trueLeft();
         break;
       case 39: // right
-        if(this.isCollision(this.player))
         this.player.trueRight();
         break;
       case 87:  //Up
-        this.isCollision(this.player2);
         this.player2.trueUp();
         break;
       case 83:  //Down
-        this.isCollision(this.player2);
         this.player2.trueDown();
         break;
       case 65:  //Left
-        this.isCollision(this.player2);
         this.player2.trueLeft();
         break;
       case 68:  //Right
-        this.isCollision(this.player2);
         this.player2.trueRight();
         break;  
       }
     }.bind(this);
+
       document.onkeyup = function(event) {
       switch( event.keyCode) {
         case 38: // Up
@@ -152,18 +145,55 @@ Game.prototype.isCollision = function() {
 Game.prototype.generateObstacle = function() {
   //Random obstacle ( walls ) generator
   var x = 0;
-  for(var i = 0; i < 10; i++) { 
+  var width = 35;
+  //Top bars
+  for(let i = 0; i < 10; i++) { 
     x += 120;
-    var y = 0;
-    this.obstacleArray.push(new Obstacle(this, x, y));   
+    let y = Math.floor(Math.random()* (90-0)+0);
+    var long = Math.floor(Math.random()* (200-120)+120);
+    this.obstacleArray.push(new Obstacle(this, x, y, width, long));   
   }
   
+  //Middle bars
   for(var i = 0; i < 9; i++) { 
     x -= 120;
-    var y = 370;
-    this.obstacleArray.push(new Obstacle(this, x, y));   
+    let y = Math.floor(Math.random()* (350-240)+220);
+    var long = Math.floor(Math.random()* (200-120)+120);
+    this.obstacleArray.push(new Obstacle(this, x, y, width, long));   
   }
 
+  //Bottom bars
+  for(var i = 0; i < 9; i++) { 
+    x += 120;
+    let y = Math.floor(Math.random()* (700-470)+470);
+    var long = Math.floor(Math.random()* (200-120)+120);
+    this.obstacleArray.push(new Obstacle(this, x, y, width, long));   
+  }
+
+  //Vertical bars top
+  for(var i = 0; i < 9; i++) { 
+    let y = 20;
+    y += 120;
+    let x = Math.floor(Math.random()* (1000-150)+150);
+    var long = Math.floor(Math.random()* (90-20)+20);
+    this.obstacleArray.push(new Obstacle(this, x, y, long, width));   
+  }
+
+  for(var i = 0; i < 9; i++) { 
+    let y = 220;
+    y += 120;
+    let x = Math.floor(Math.random()* (1000-150)+150);
+    var long = Math.floor(Math.random()* (90-20)+20);
+    this.obstacleArray.push(new Obstacle(this, x, y, long, width));   
+  }
+
+  for(var i = 0; i < 9; i++) { 
+    let y = 420;
+    y += 120;
+    let x = Math.floor(Math.random()* (1000-150)+150);
+    var long = Math.floor(Math.random()* (90-20)+20);
+    this.obstacleArray.push(new Obstacle(this, x, y, long, width));   
+  }
   
 };
 
