@@ -2,9 +2,6 @@ function Game(canvasId) {
   this.canvas = document.getElementById(canvasId);
   this.ctx = this.canvas.getContext("2d");
 
-  /* this.width = 1200;
-  this.height = 700; */
-
   //Array to store obstacles
   this.obstacleArray = [];
   
@@ -27,24 +24,19 @@ Game.prototype.start = function() {
   
   this.setListeners();
   this.generateObstacle();
-  this.drawObstacles();
-
 };
 
+//Groups movement
 Game.prototype.move = function() {
-  this.player.moveUp();
-  this.player.moveDown();
-  this.player.moveLeft();
-  this.player.moveRight();
-  this.player2.moveUp();
-  this.player2.moveDown();
-  this.player2.moveLeft();
-  this.player2.moveRight();
+  this.player.move();
+  this.player2.move();
 };
 
+//Listeners to move both
 Game.prototype.setListeners = function() {
-  debugger;
   document.onkeydown = function(event) {
+
+    
     switch(event.keyCode) {
       case 38: // Up
           this.player.trueUp();
@@ -145,7 +137,7 @@ Game.prototype.isCollision = function() {
 Game.prototype.generateObstacle = function() {
   //Random obstacle ( walls ) generator
   var x = 0;
-  var width = 35;
+  var width = 25;
   //Top bars
   for(let i = 0; i < 10; i++) { 
     x += 120;
@@ -202,13 +194,12 @@ Game.prototype.clear = function() {
   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 };
 
-//Draws background and players
 Game.prototype.draw = function(){
- this.background.draw();
- this.player.draw();
- this.player2.draw();
- this.totem.draw();
- this.drawObstacles();
+  this.background.draw();
+  this.drawObstacles();
+  this.player.draw();
+  this.player2.draw();
+  this.totem.draw();
  };
 
  //Draws obstacle array

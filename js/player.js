@@ -1,14 +1,14 @@
 function Player(game,x, y, color) {
   this.game = game;
   
-  this.r = 25;
+  this.r = 15;
   this.x = x;
   this.y = y;
   this.color = color;
   this.score = 0;
   
-  this.vx = 10;
-  this.vy = 10;
+  this.vx = 5;
+  this.vy = 5;
 
   this.lastX = 0;
   this.lastY = 0;
@@ -16,7 +16,6 @@ function Player(game,x, y, color) {
   this.pressedKeys = [false, false, false, false]; //up, down, left, right
   //this.gravity = 0.15;
   
-  /* this.setListeners(); */
 }
 
 //A ball as a placeholder
@@ -46,34 +45,29 @@ Player.prototype.animateImg = function() {
 
 
 //Movement functions
-Player.prototype.moveUp = function() { 
+Player.prototype.move = function() { 
   if(this.pressedKeys[0] === true){
     if (this.y <= 50) return;
     this.lastY = this.y;
     this.lastX = this.x;
     this.y -= this.vy;
   }
-};  
+ 
 
-Player.prototype.moveDown = function() { 
   if(this.pressedKeys[1] === true){
   if (this.y + 50 >= this.game.canvas.height) return;
   this.lastY = this.y;
   this.lastX = this.x;
   this.y += this.vy;
   }
-};  
 
-Player.prototype.moveRight = function() { 
   if(this.pressedKeys[3] === true){
   if (this.x + 50 >= this.game.canvas.width) return;
   this.lastY = this.y;
   this.lastX = this.x;
   this.x += this.vx;
   }
-};  
 
-Player.prototype.moveLeft = function() { 
   if(this.pressedKeys[2] === true){
   if (this.x - 50 < 0) return;
   this.lastY = this.y;

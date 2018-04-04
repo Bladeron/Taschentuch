@@ -1,15 +1,9 @@
 function Totem(game) {
   this.game = game;
   
-  /* this.x = this.game.canvas.width/2; */
-  this.x = Math.floor(Math.random()*(700-500+1)+500);
-  this.y = Math.floor(Math.random()*(400-350+1)+350);
-  
-  this.width = 80;
-  this.height = 80;
-  this.r = 25;
-  
-  
+  this.width = 40;
+  this.height = 40;
+  this.position = true;
   /* this.img = new Image();
   this.img.src = "img/totem.png"; */
 
@@ -19,9 +13,35 @@ function Totem(game) {
 
 //Loads totem image in a random place ( area to be determined )
 Totem.prototype.draw = function() { 
-  
-  this.game.ctx.fillRect(this.x - this.width/2,this.y - this.height/2,this.width,this.height);
-  
+ 
+  if (this.position) {
+    this.canPlace()
+  } else {
+    this.game.ctx.fillRect(this.x - this.width/2,this.y - this.height/2,this.width,this.height);
+  }
+
   //this.animateImg();
 
 };
+
+//Calculates if totem can be placed
+Totem.prototype.canPlace = function() {
+    this.x = Math.floor(Math.random()*(800-400)+400);
+    this.y = Math.floor(Math.random()*(650-60)+60);
+
+    for (var i=0; i<this.game.obstacleArray.length; i++) {
+    
+      if(
+        this.x - this.width <= this.game.obstacleArray[i].x + this.game.obstacleArray[i].w &&
+        this.x + this.width > this.game.obstacleArray[i].x &&
+        this.y - this.height < this.game.obstacleArray[i].y + this.game.obstacleArray[i].h &&
+        this.y + this.height > this.game.obstacleArray[i].y ) { 
+          console.log("Totem collision");
+          this.canPlace()
+          
+      }
+     
+    }
+    this.game.ctx.fillRect(this.x - this.width/2,this.y - this.height/2,this.width,this.height);
+    this.position = false;
+}
