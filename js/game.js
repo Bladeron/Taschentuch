@@ -19,6 +19,7 @@ Game.prototype.start = function() {
     this.clear();
     this.draw();
     this.isCollision();
+    this.totem.colidesWith();
     this.move();
   }.bind(this), 10);
   
@@ -207,4 +208,21 @@ Game.prototype.drawObstacles = function() {
   for (var i = 0; i < this.obstacleArray.length; i++) {
     this.obstacleArray[i].draw();
   }
+};
+
+Game.prototype.reset = function() {
+  this.player.x = 50;
+  this.player.y = this.canvas.height / 2;
+
+  this.player2.x = this.canvas.width - 50;
+  this.player2.y = this.canvas.height / 2;
+
+  this.obstacleArray = []
+  this.clear();
+  this.draw();
+  this.generateObstacle();
+
+  this.totem.position = true;
+  this.totem.draw();
+  
 };

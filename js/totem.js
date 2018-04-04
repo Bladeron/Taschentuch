@@ -45,3 +45,27 @@ Totem.prototype.canPlace = function() {
     this.game.ctx.fillRect(this.x - this.width/2,this.y - this.height/2,this.width,this.height);
     this.position = false;
 }
+
+
+Totem.prototype.colidesWith = function() {
+   if (this.x - this.width <= this.game.player.x + this.game.player.r &&
+    this.x + this.width > this.game.player.x &&
+    this.y - this.height < this.game.player.y + this.game.player.r &&
+    this.y + this.height > this.game.player.y ) { 
+      console.log("Impacto")
+      this.game.player.score++
+      console.log(this.game.player.score)
+      this.game.reset();
+      return;
+   }
+   if (this.x - this.width <= this.game.player2.x + this.game.player2.r &&
+    this.x + this.width > this.game.player2.x &&
+    this.y - this.height < this.game.player2.y + this.game.player2.r &&
+    this.y + this.height > this.game.player2.y ) { 
+      console.log("Impacto 2")
+      this.game.player2.score++
+      console.log(this.game.player2.score)
+      this.game.reset();
+      return;
+   }
+}
