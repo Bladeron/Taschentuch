@@ -19,47 +19,6 @@ function Player(game,x, y, color) {
   /* this.setListeners(); */
 }
 
-//Keys to move both players not together :(
-/* Player.prototype.setListeners = function() {
-  document.onkeydown = function(event) {
-    switch( event.keyCode) {
-      case 38: // Up
-        if(this.game.isCollision(this.game.player))
-          this.moveUp(this.game.player);
-        break;
-      case 40: // Down
-        if(this.game.isCollision(this.game.player))
-          this.moveDown(this.game.player);
-         break;
-      case 37: // left
-        if(this.game.isCollision(this.game.player))
-          this.moveLeft(this.game.player);
-        break;
-      case 39: // right
-        if(this.game.isCollision(this.game.player))
-          this.moveRight(this.game.player);
-        break;
-      case 87:  //Up
-        this.game.isCollision(this.game.player2);
-        this.moveUp(this.game.player2);
-        break;
-      case 83:  //Down
-        this.game.isCollision(this.game.player2);
-        this.moveDown(this.game.player2);
-        break;
-      case 65:  //Left
-        this.game.isCollision(this.game.player2);
-        this.moveLeft(this.game.player2);
-        break;
-      case 68:  //Right
-        this.game.isCollision(this.game.player2);
-        this.moveRight(this.game.player2);
-        break;  
-      }
-  }.bind(this);
-}; */
-
-
 //A ball as a placeholder
 Player.prototype.draw = function() { 
   this.game.ctx.beginPath();
