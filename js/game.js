@@ -10,6 +10,7 @@ function Game(canvasId) {
   this.player = new Player(this, 50, this.canvas.height / 2, "red");
   this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "green");
   this.totem = new Totem (this); 
+  this.score = new Score(this);
   
 }
 
@@ -201,6 +202,7 @@ Game.prototype.draw = function(){
   this.player.draw();
   this.player2.draw();
   this.totem.draw();
+  this.score.draw();
  };
 
  //Draws obstacle array
