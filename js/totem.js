@@ -55,7 +55,11 @@ Totem.prototype.colidesWith = function() {
       console.log("Impacto")
       this.game.player.score++
       console.log(this.game.player.score)
+      if(this.game.player.score == 6) {
+        console.log("Player 1 ha ganado")
+      } else {
       this.game.reset();
+      }
       return;
    }
    if (this.x - this.width <= this.game.player2.x + this.game.player2.r &&

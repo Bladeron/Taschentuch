@@ -11,6 +11,7 @@ function Game(canvasId) {
   this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "green");
   this.totem = new Totem (this); 
   this.score = new Score(this);
+  this.Img = new Img(this);
   
 }
 
@@ -22,7 +23,7 @@ Game.prototype.start = function() {
     this.isCollision();
     this.totem.colidesWith();
     this.move();
-  }.bind(this), 10);
+  }.bind(this), 16);
   
   this.setListeners();
   this.generateObstacle();
@@ -145,7 +146,7 @@ Game.prototype.generateObstacle = function() {
     x += 120;
     let y = Math.floor(Math.random()* (90-0)+0);
     var long = Math.floor(Math.random()* (200-120)+120);
-    this.obstacleArray.push(new Obstacle(this, x, y, width, long));   
+    this.obstacleArray.push(new Obstacle(this, x, y, width, long, this.Img.bushHori));   
   }
   
   //Middle bars
@@ -153,7 +154,7 @@ Game.prototype.generateObstacle = function() {
     x -= 120;
     let y = Math.floor(Math.random()* (350-240)+220);
     var long = Math.floor(Math.random()* (200-120)+120);
-    this.obstacleArray.push(new Obstacle(this, x, y, width, long));   
+    this.obstacleArray.push(new Obstacle(this, x, y, width, long, this.Img.bushHori));   
   }
 
   //Bottom bars
@@ -161,7 +162,7 @@ Game.prototype.generateObstacle = function() {
     x += 120;
     let y = Math.floor(Math.random()* (700-470)+470);
     var long = Math.floor(Math.random()* (200-120)+120);
-    this.obstacleArray.push(new Obstacle(this, x, y, width, long));   
+    this.obstacleArray.push(new Obstacle(this, x, y, width, long, this.Img.bushHori));   
   }
 
   //Vertical bars top
@@ -170,7 +171,7 @@ Game.prototype.generateObstacle = function() {
     y += 120;
     let x = Math.floor(Math.random()* (1000-150)+150);
     var long = Math.floor(Math.random()* (90-20)+20);
-    this.obstacleArray.push(new Obstacle(this, x, y, long, width));   
+    this.obstacleArray.push(new Obstacle(this, x, y, long, width, this.Img.bushVert));   
   }
 
   for(var i = 0; i < 9; i++) { 
@@ -178,7 +179,7 @@ Game.prototype.generateObstacle = function() {
     y += 120;
     let x = Math.floor(Math.random()* (1000-150)+150);
     var long = Math.floor(Math.random()* (90-20)+20);
-    this.obstacleArray.push(new Obstacle(this, x, y, long, width));   
+    this.obstacleArray.push(new Obstacle(this, x, y, long, width, this.Img.bushVert));   
   }
 
   for(var i = 0; i < 9; i++) { 
@@ -186,7 +187,7 @@ Game.prototype.generateObstacle = function() {
     y += 120;
     let x = Math.floor(Math.random()* (1000-150)+150);
     var long = Math.floor(Math.random()* (90-20)+20);
-    this.obstacleArray.push(new Obstacle(this, x, y, long, width));   
+    this.obstacleArray.push(new Obstacle(this, x, y, long, width, this.Img.bushVert));   
   }
   
 };
