@@ -1,9 +1,10 @@
-function Totem(game) {
+function Totem(game, img) {
   this.game = game;
   
-  this.width = 40;
-  this.height = 40;
+  this.width = 35;
+  this.height = 35;
   this.position = true;
+  this.img = img;
   /* this.img = new Image();
   this.img.src = "img/totem.png"; */
 
@@ -17,7 +18,8 @@ Totem.prototype.draw = function() {
   if (this.position) {
     this.canPlace()
   } else {
-    this.game.ctx.fillRect(this.x - this.width/2,this.y - this.height/2,this.width,this.height);
+    //this.game.ctx.fillRect(this.x - this.width/2,this.y - this.height/2,this.width,this.height);
+    this.game.ctx.drawImage(this.img, this.x - this.width/2, this.y - this.height/2, this.width, this.height);
   }
 
   //this.animateImg();
@@ -42,7 +44,8 @@ Totem.prototype.canPlace = function() {
       }
      
     }
-    this.game.ctx.fillRect(this.x - this.width/2,this.y - this.height/2,this.width,this.height);
+    //this.game.ctx.fillRect(this.x - this.width/2,this.y - this.height/2,this.width,this.height);
+    this.game.ctx.drawImage(this.img, this.x - this.width/2, this.y - this.height/2, this.width, this.height);
     this.position = false;
 }
 

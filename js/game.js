@@ -6,12 +6,12 @@ function Game(canvasId) {
   this.obstacleArray = [];
   
   //Objects
+  this.Img = new Img(this);
   this.background = new Background(this);
   this.player = new Player(this, 50, this.canvas.height / 2, "red");
-  this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "green");
-  this.totem = new Totem (this); 
+  this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "yellow");
+  this.totem = new Totem (this, this.Img.gem); 
   this.score = new Score(this);
-  this.Img = new Img(this);
   
 }
 
