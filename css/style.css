@@ -1,3 +1,29 @@
 canvas {
   border: 1px black solid;
 }
+
+body {
+  background-color: black;
+
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 40px;
+}
+
+canvas {
+  margin: 0 auto;
+  display: block;
+}
+
+#game-over {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .6);
+}

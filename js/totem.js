@@ -60,6 +60,7 @@ Totem.prototype.colidesWith = function() {
       console.log(this.game.player.score)
       if(this.game.player.score == 6) {
         console.log("Player 1 ha ganado")
+        this.game.stop();
       } else {
       this.game.reset();
       }
@@ -69,10 +70,15 @@ Totem.prototype.colidesWith = function() {
     this.x + this.width > this.game.player2.x &&
     this.y - this.height < this.game.player2.y + this.game.player2.r &&
     this.y + this.height > this.game.player2.y ) { 
-      console.log("Impacto 2")
+      console.log("Impacto")
       this.game.player2.score++
       console.log(this.game.player2.score)
+      if(this.game.player2.score == 6) {
+        console.log("Player 2 ha ganado")
+        this.game.stop();
+      } else {
       this.game.reset();
+      }
       return;
    }
 }

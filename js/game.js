@@ -229,3 +229,15 @@ Game.prototype.reset = function() {
   this.totem.draw();
   
 };
+
+Game.prototype.stop = function() {
+  clearInterval(this.interval);
+  $("#game-over").fadeIn()
+
+if(this.player.score == 6)
+  $("#text-game-over").text("Player 1 wins!")
+  else {
+  $("#text-game-over").text("Player 2 wins!")
+  }
+};
+
