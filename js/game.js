@@ -14,7 +14,8 @@ function Game(canvasId) {
   this.score = new Score(this);
   this.audioVictory = new Audio("audio/victory.mp3");
   this.audioCombat = new Audio ("audio/combat3.mp3");
-  this.audioStart = new Audio ("audio/stones.mp3")
+  this.audioStart = new Audio ("audio/stones.mp3");
+  this.audioPickup = new Audio ("audio/pickup.wav");
 }
 
 //Starts the game
