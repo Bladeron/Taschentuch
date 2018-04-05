@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+
 canvas {
   border: 1px black solid;
 }
@@ -26,4 +29,19 @@ canvas {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, .6);
+}
+
+#game-over p {
+  font-family: "Press Start 2P";
+  text-align: center;
+  color: white;
+  font-size: 42px;
+}
+
+#game-over h2{
+  font-family: "Press Start 2P";
+  margin-top: 250px;
+  text-align: center;
+  color: white;
+  font-size: 61px;
 }

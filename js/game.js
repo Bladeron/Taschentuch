@@ -12,7 +12,9 @@ function Game(canvasId) {
   this.player2 = new Player(this, this.canvas.width - 50, this.canvas.height / 2, "yellow");
   this.totem = new Totem (this, this.Img.gem); 
   this.score = new Score(this);
-  
+  this.audioVictory = new Audio("audio/victory.mp3");
+  this.audioCombat = new Audio ("audio/combat3.mp3");
+  this.audioStart = new Audio ("audio/stones.mp3")
 }
 
 //Starts the game
@@ -24,7 +26,7 @@ Game.prototype.start = function() {
     this.totem.colidesWith();
     this.move();
   }.bind(this), 16);
-  
+  this.audioCombat.play()
   this.setListeners();
   this.generateObstacle();
 };
@@ -232,6 +234,8 @@ Game.prototype.reset = function() {
 
 Game.prototype.stop = function() {
   clearInterval(this.interval);
+  this.audioVictory.play()
+  this.audioCombat.pause()
   $("#game-over").fadeIn()
 
 if(this.player.score == 6)
