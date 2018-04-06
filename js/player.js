@@ -5,7 +5,7 @@ function Player(game,x, y, color) {
   this.x = x;
   this.y = y;
   this.color = color;
-  this.score = 5;
+  this.score = 0;
   
   this.vx = 5;
   this.vy = 5;
